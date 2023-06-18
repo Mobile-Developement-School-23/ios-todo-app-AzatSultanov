@@ -13,8 +13,8 @@ class ViewController: UIViewController {
         let toDoItem2 = ToDoItem(text: "Krasava", importance: .normal, isDone: false)
         fileCache1.add(toDoItem: toDoItem)
         fileCache1.add(toDoItem: toDoItem2)
-        fileCache1.saveToJSON(name: "jsonTest")
-        fileCache2.loadFromJSON(name: "jsonTest")
+        fileCache1.saveToCSV(name: "csvTest")
+        fileCache2.loadFromCSV(name: "csvTest")
         print(fileCache2.dictToDo)
         print(getDocumentsDirectory())
     }
