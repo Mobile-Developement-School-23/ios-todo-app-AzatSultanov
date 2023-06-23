@@ -148,6 +148,7 @@ final class UnitTestsTodoItem: XCTestCase {
     
     let item3 = ToDoItem(text: "text task 3", importance: .unimportant)
     let csv3 = ", text task 3, unimportant,,,,"
+      
     
     guard let parsedItem1 = ToDoItem.parseCSV(csv: csv1),
           let parsedItem2 = ToDoItem.parseCSV(csv: csv2),
