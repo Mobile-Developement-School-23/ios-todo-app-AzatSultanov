@@ -363,4 +363,30 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     return nil
   }
+  
+  func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+      return UIContextMenuConfiguration(actionProvider: { [weak self] suggestedActions -> UIMenu? in
+        guard let item = self?.items[indexPath.row] else { return nil }
+        let deleteAction = UIAction(title: "Удалить") { [weak self] action in
+          self?.showButton.titleLabel?.text = "Скрыть"
+          self?.addDoneItems()
+          self?.fileCache.remove(id: (self?.items[indexPath.row].id) ?? "")
+          self?.tableView.reloadData()
+          self?.fileCache.saveToJSON(name: self?.jsonName ?? "hui")
+          self?.updateItems()
+        }
+        return UIMenu(title: "", children: [deleteAction])
+      })
+    }
+    
+    func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+      
+      guard let destinationViewController = animator.previewViewController else {
+        return
+      }
+      
+      animator.addAnimations {
+        self.show(destinationViewController, sender: self)
+      }
+    }
 }
