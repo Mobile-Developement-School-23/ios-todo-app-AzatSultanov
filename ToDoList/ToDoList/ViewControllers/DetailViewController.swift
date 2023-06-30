@@ -94,7 +94,7 @@ class DetailViewController: UIViewController {
   
   private let saveButton: UIButton = {
     let button = UIButton()
-    button.setTitle("Сохарнить", for: .normal)
+    button.setTitle("Сохранить", for: .normal)
     button.setTitleColor(Colors.LightTheme.blue, for: .normal)
     button.setTitleColor(Colors.LightTheme.labelTertiary, for: .disabled)
     button.titleLabel?.font = .systemFont(ofSize: 17)
@@ -167,6 +167,9 @@ class DetailViewController: UIViewController {
       self?.calendarSeparator.isHidden = true
       self?.calendarView.isHidden = true
       self?.currentSelected = nil
+    }
+    deadLineView.switchOnCompletion = { [weak self] in
+      self?.currentSelected = Calendar.current.date(byAdding: .day, value: 1, to: Date())
     }
     
     setupScrollView()

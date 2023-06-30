@@ -11,6 +11,7 @@ class DeadlineView: UIView {
   
   public var dateButtonTapCompletion: (() -> Void)?
   public var switchOffCompletion: (() -> Void)?
+  public var switchOnCompletion: (() -> Void)?
 
   
   private let deadLineLabel: UILabel = {
@@ -96,6 +97,8 @@ class DeadlineView: UIView {
   @objc func didSwitch(target: UISwitch) {
     if !target.isOn {
       switchOffCompletion?()
+    } else {
+      switchOnCompletion?()
     }
     
     dateButton.isHidden = !target.isOn

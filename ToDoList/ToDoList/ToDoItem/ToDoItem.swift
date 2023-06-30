@@ -92,7 +92,9 @@ extension ToDoItem {
     guard let id = jsDict["id"] as? String,
           let text = jsDict["text"] as? String,
           let creationDate = jsDict["creationDate"] as? Double else { return nil }
-    let importance = jsDict["importance"] as? Importance ?? .normal
+    let importance = Importance(rawValue: jsDict["importance"] as? String ?? "") ?? .normal
+    // hueta
+//    let importance = jsDict["importance"] as? Importance ?? .normal
     let deadLine = (jsDict["deadLine"] as? Double).flatMap { Date(timeIntervalSince1970: TimeInterval($0)) }
     let isDone = jsDict["isDone"] as? Bool ?? false
     let changeDate = (jsDict["changeDate"] as? Double).flatMap { Date(timeIntervalSince1970: TimeInterval($0)) }
