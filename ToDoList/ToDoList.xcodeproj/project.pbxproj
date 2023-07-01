@@ -23,6 +23,8 @@
 		EA72FE372A44A30100B61871 /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FE362A44A30100B61871 /* DeadlineView.swift */; };
 		EA72FE392A44AAA500B61871 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FE382A44AAA500B61871 /* SeparatorView.swift */; };
 		EA72FE3B2A44B33900B61871 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FE3A2A44B33900B61871 /* CalendarView.swift */; };
+		EA72FE462A4E58F200B61871 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FE452A4E58F200B61871 /* TableViewCell.swift */; };
+		EA72FE4A2A4E5A4A00B61871 /* TypesExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FE492A4E5A4A00B61871 /* TypesExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		EA72FE362A44A30100B61871 /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
 		EA72FE382A44AAA500B61871 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		EA72FE3A2A44B33900B61871 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		EA72FE452A4E58F200B61871 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		EA72FE492A4E5A4A00B61871 /* TypesExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 		EA51A84F2A3B7E05001D5699 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				EA72FE482A4E59B600B61871 /* Extensions */,
 				EA51A8502A3B7E05001D5699 /* AppDelegate.swift */,
 				EA51A8522A3B7E05001D5699 /* SceneDelegate.swift */,
 				EA72FE3C2A46153600B61871 /* Constants */,
@@ -147,6 +152,7 @@
 			children = (
 				EA72FE332A449F9700B61871 /* Views */,
 				EA51A8542A3B7E05001D5699 /* ViewController.swift */,
+				EA72FE452A4E58F200B61871 /* TableViewCell.swift */,
 				EA72FE312A43A37600B61871 /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
@@ -178,6 +184,14 @@
 				6766C0942A461C0400FBCAD6 /* UI.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		EA72FE482A4E59B600B61871 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EA72FE492A4E5A4A00B61871 /* TypesExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,11 +328,13 @@
 				EA72FE392A44AAA500B61871 /* SeparatorView.swift in Sources */,
 				EA51A8552A3B7E05001D5699 /* ViewController.swift in Sources */,
 				EA51A8512A3B7E05001D5699 /* AppDelegate.swift in Sources */,
+				EA72FE4A2A4E5A4A00B61871 /* TypesExtensions.swift in Sources */,
 				EA51A8812A3B7EC7001D5699 /* ToDoItem.swift in Sources */,
 				EA72FE322A43A37600B61871 /* DetailViewController.swift in Sources */,
 				EA72FE352A449FBA00B61871 /* ImportanceView.swift in Sources */,
 				EA51A8832A3C8E4C001D5699 /* FileCache.swift in Sources */,
 				6766C0952A461C0400FBCAD6 /* UI.swift in Sources */,
+				EA72FE462A4E58F200B61871 /* TableViewCell.swift in Sources */,
 				EA72FE372A44A30100B61871 /* DeadlineView.swift in Sources */,
 				EA51A8532A3B7E05001D5699 /* SceneDelegate.swift in Sources */,
 			);
