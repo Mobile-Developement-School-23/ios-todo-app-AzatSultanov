@@ -18,6 +18,7 @@
 		EA51A8742A3B7E06001D5699 /* ToDoListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA51A8732A3B7E06001D5699 /* ToDoListUITestsLaunchTests.swift */; };
 		EA51A8812A3B7EC7001D5699 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA51A8802A3B7EC7001D5699 /* ToDoItem.swift */; };
 		EA51A8832A3C8E4C001D5699 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA51A8822A3C8E4C001D5699 /* FileCache.swift */; };
+		EA5FC02B2A5DA4A100019F9B /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FC02A2A5DA4A100019F9B /* URLSessionExtension.swift */; };
 		EA72FE322A43A37600B61871 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FE312A43A37600B61871 /* DetailViewController.swift */; };
 		EA72FE352A449FBA00B61871 /* ImportanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FE342A449FBA00B61871 /* ImportanceView.swift */; };
 		EA72FE372A44A30100B61871 /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FE362A44A30100B61871 /* DeadlineView.swift */; };
@@ -60,6 +61,7 @@
 		EA51A8732A3B7E06001D5699 /* ToDoListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EA51A8802A3B7EC7001D5699 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		EA51A8822A3C8E4C001D5699 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
+		EA5FC02A2A5DA4A100019F9B /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
 		EA72FE312A43A37600B61871 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EA72FE342A449FBA00B61871 /* ImportanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceView.swift; sourceTree = "<group>"; };
 		EA72FE362A44A30100B61871 /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				EA72FE492A4E5A4A00B61871 /* TypesExtensions.swift */,
+				EA5FC02A2A5DA4A100019F9B /* URLSessionExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				EA51A8812A3B7EC7001D5699 /* ToDoItem.swift in Sources */,
 				EA72FE322A43A37600B61871 /* DetailViewController.swift in Sources */,
 				EA72FE352A449FBA00B61871 /* ImportanceView.swift in Sources */,
+				EA5FC02B2A5DA4A100019F9B /* URLSessionExtension.swift in Sources */,
 				EA51A8832A3C8E4C001D5699 /* FileCache.swift in Sources */,
 				6766C0952A461C0400FBCAD6 /* UI.swift in Sources */,
 				EA72FE462A4E58F200B61871 /* TableViewCell.swift in Sources */,
