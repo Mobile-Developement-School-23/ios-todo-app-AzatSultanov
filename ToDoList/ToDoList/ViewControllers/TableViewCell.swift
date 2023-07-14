@@ -71,7 +71,7 @@ class TableViewCell: UITableViewCell {
   }
   
   private func setupIsDoneButton() {
-    isDoneButton.setImage(Images.isDoneButton.circle, for: .normal)
+    isDoneButton.setImage(Images.IsDoneButton.circle, for: .normal)
     
     isDoneButton.addTarget(self, action: #selector(changeIsDoneState), for: .touchUpInside)
     isDoneButton.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +92,7 @@ class TableViewCell: UITableViewCell {
     
     switch (isDone, importance) {
     case (true, _):
-      isDoneButton.setImage(Images.isDoneButton.doneCircle, for: .normal)
+      isDoneButton.setImage(Images.IsDoneButton.doneCircle, for: .normal)
       isDoneButton.tintColor = .systemGreen
     
       let attributtedString = NSAttributedString(string: text, attributes: [
@@ -101,7 +101,7 @@ class TableViewCell: UITableViewCell {
       textItem.attributedText = attributtedString
       
     case (false, .unimportant):
-      isDoneButton.setImage(Images.isDoneButton.circle, for: .normal)
+      isDoneButton.setImage(Images.IsDoneButton.circle, for: .normal)
       isDoneButton.tintColor = .gray
       
 //      let attributtedString = NSMutableAttributedString(string: text)
@@ -110,7 +110,7 @@ class TableViewCell: UITableViewCell {
       textItem.attributedText = addImageString(text: text, image: lowPriorityImage)
       
     case (false, .normal):
-      isDoneButton.setImage(Images.isDoneButton.circle, for: .normal)
+      isDoneButton.setImage(Images.IsDoneButton.circle, for: .normal)
       isDoneButton.tintColor = .gray
       
 //      let attributtedString = NSMutableAttributedString(string: text)
@@ -121,7 +121,7 @@ class TableViewCell: UITableViewCell {
 //      textItem.attributedText = attributedString
       
     case (false, .important):
-      isDoneButton.setImage(Images.isDoneButton.redCircle, for: .normal)
+      isDoneButton.setImage(Images.IsDoneButton.redCircle, for: .normal)
       isDoneButton.tintColor = .red
       
 //      let attributtedString = NSMutableAttributedString(string: text)

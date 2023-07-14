@@ -13,7 +13,6 @@ class DeadlineView: UIView {
   public var switchOffCompletion: (() -> Void)?
   public var switchOnCompletion: (() -> Void)?
 
-  
   private let deadLineLabel: UILabel = {
     let label = UILabel()
     label.text = "Сделать до"
