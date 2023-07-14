@@ -29,6 +29,8 @@
 		EA72FE3B2A44B33900B61871 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FE3A2A44B33900B61871 /* CalendarView.swift */; };
 		EA72FE462A4E58F200B61871 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FE452A4E58F200B61871 /* TableViewCell.swift */; };
 		EA72FE4A2A4E5A4A00B61871 /* TypesExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FE492A4E5A4A00B61871 /* TypesExtensions.swift */; };
+		EAB8E69C2A61C40500153902 /* SQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB8E69B2A61C40500153902 /* SQLManager.swift */; };
+		EAB8E69F2A61C83500153902 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = EAB8E69E2A61C83500153902 /* SQLite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,7 @@
 		EA72FE3A2A44B33900B61871 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		EA72FE452A4E58F200B61871 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		EA72FE492A4E5A4A00B61871 /* TypesExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesExtensions.swift; sourceTree = "<group>"; };
+		EAB8E69B2A61C40500153902 /* SQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAB8E69F2A61C83500153902 /* SQLite in Frameworks */,
 				4EA313AE1FD568CE6CA2F5D7 /* Pods_ToDoList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				EA51A8822A3C8E4C001D5699 /* FileCache.swift */,
+				EAB8E69B2A61C40500153902 /* SQLManager.swift */,
 				EA51A8802A3B7EC7001D5699 /* ToDoItem.swift */,
 			);
 			path = ToDoItem;
@@ -248,13 +253,15 @@
 				EA51A8492A3B7E05001D5699 /* Sources */,
 				EA51A84A2A3B7E05001D5699 /* Frameworks */,
 				EA51A84B2A3B7E05001D5699 /* Resources */,
-				EAA070DD2A61632C0083B15D /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ToDoList;
+			packageProductDependencies = (
+				EAB8E69E2A61C83500153902 /* SQLite */,
+			);
 			productName = ToDoList;
 			productReference = EA51A84D2A3B7E05001D5699 /* ToDoList.app */;
 			productType = "com.apple.product-type.application";
@@ -329,6 +336,9 @@
 				Base,
 			);
 			mainGroup = EA51A8442A3B7E05001D5699;
+			packageReferences = (
+				EAB8E69D2A61C83500153902 /* XCRemoteSwiftPackageReference "SQLite.swift.git" */,
+			);
 			productRefGroup = EA51A84E2A3B7E05001D5699 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -433,23 +443,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EAA070DD2A61632C0083B15D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -468,6 +461,7 @@
 				EA5FC02B2A5DA4A100019F9B /* URLSessionExtension.swift in Sources */,
 				EA51A8832A3C8E4C001D5699 /* FileCache.swift in Sources */,
 				6766C0952A461C0400FBCAD6 /* UI.swift in Sources */,
+				EAB8E69C2A61C40500153902 /* SQLManager.swift in Sources */,
 				EA72FE462A4E58F200B61871 /* TableViewCell.swift in Sources */,
 				EA72FE372A44A30100B61871 /* DeadlineView.swift in Sources */,
 				EA51A8532A3B7E05001D5699 /* SceneDelegate.swift in Sources */,
@@ -808,6 +802,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EAB8E69D2A61C83500153902 /* XCRemoteSwiftPackageReference "SQLite.swift.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EAB8E69E2A61C83500153902 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAB8E69D2A61C83500153902 /* XCRemoteSwiftPackageReference "SQLite.swift.git" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EA51A8452A3B7E05001D5699 /* Project object */;
 }

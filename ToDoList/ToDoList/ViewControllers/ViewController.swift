@@ -4,6 +4,7 @@ class ViewController: UIViewController {
   
   let fileCache = FileCache()
   let jsonName = "Some name"
+  let sqlite = SQLiteStorage()
   var items: [ToDoItem] = []
   var doneItems: [ToDoItem] = []
   
@@ -22,7 +23,8 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemGray5
-    let datatask = URLSession()
+    
+    sqlite.fetchOrCreateDB()
     
     updateItems()
     setupNavigationBar()
@@ -30,12 +32,13 @@ class ViewController: UIViewController {
     setupTableView()
     setupAddButton()
     setupConstraints()
-    
   }
   
   private func updateItems() {
-    fileCache.loadFromJSON(name: jsonName)
-    items = Array(fileCache.dictToDo.values).sorted(by: { $0.creationDate > $1.creationDate})
+//    fileCache.loadFromJSON(name: jsonName)
+    items = sqlite.load() ?? []
+    items = items.sorted(by: { $0.creationDate > $1.creationDate})
+//    items = Array(fileCache.dictToDo.values).sorted(by: { $0.creationDate > $1.creationDate})
     isDoneCounter = 0
     checkCounter()
   }
@@ -179,22 +182,22 @@ class ViewController: UIViewController {
     doneItems = []
   }
   
-  @objc private func didTapSaveButton() {
-    fileCache.saveToJSON(name: jsonName)
-  }
-  
-  @objc private func didTapEditButton() {
-    guard let item = fileCache.dictToDo.first?.value else { return }
-    let vc = DetailViewController(openType: .edit, item: item)
-    vc.removeCompletion = { [weak self] id in
-      self?.fileCache.remove(id: id)
-    }
-    presentDetailts(vc: vc)
-  }
-  
-  @objc private func didTapPrintButton() {
-    print(fileCache.dictToDo)
-  }
+//  @objc private func didTapSaveButton() {
+//    fileCache.saveToJSON(name: jsonName)
+//  }
+//
+//  @objc private func didTapEditButton() {
+//    guard let item = fileCache.dictToDo.first?.value else { return }
+//    let vc = DetailViewController(openType: .edit, item: item)
+//    vc.removeCompletion = { [weak self] id in
+//      self?.fileCache.remove(id: id)
+//    }
+//    presentDetailts(vc: vc)
+//  }
+//
+//  @objc private func didTapPrintButton() {
+//    print(fileCache.dictToDo)
+//  }
   
   private func presentDetailts(vc: DetailViewController) {
     let nav = UINavigationController(rootViewController: vc)
@@ -203,8 +206,9 @@ class ViewController: UIViewController {
     vc.saveCompletion = { [weak self] item in
       self?.showButton.titleLabel?.text = "Скрыть"
       self?.addDoneItems()
-      self?.fileCache.add(toDoItem: item)
-      self?.fileCache.saveToJSON(name: self?.jsonName ?? "hui")
+//      self?.fileCache.add(toDoItem: item)
+//      self?.fileCache.saveToJSON(name: self?.jsonName ?? "hui")
+      self?.sqlite.insertOrUpdate(item: item)
       self?.updateItems()
       self?.tableView.reloadData()
     }
@@ -218,9 +222,10 @@ class ViewController: UIViewController {
                             isDone: isDone,
                             creationDate: items[index].creationDate,
                             changeDate: Date())
-    fileCache.remove(id: items[index].id)
-    fileCache.add(toDoItem: items[index])
-    fileCache.saveToJSON(name: jsonName)
+    sqlite.insertOrUpdate(item: items[index])
+//    fileCache.remove(id: items[index].id)
+//    fileCache.add(toDoItem: items[index])
+//    fileCache.saveToJSON(name: jsonName)
 //    updateItems()
   }
   
@@ -290,12 +295,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         self?.doneTaskCountLabel.text = "Выполнено - \(self!.isDoneCounter)"
         self?.updateItem(isDone: isDone, index: indexPath.row)
       }
-      
-//      if items[indexPath.row].isDone {
-//        cell.isHidden = true
-//      } else {
-//        cell.isHidden = false
-//      }
 
       return cell
     }
@@ -311,8 +310,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     let selectedItem = items[indexPath.row]
     let vc = DetailViewController(openType: .edit, item: selectedItem)
     vc.removeCompletion = { [weak self] id in
-      self?.fileCache.remove(id: id)
-      self?.fileCache.saveToJSON(name: self?.jsonName ?? "hui")
+//      self?.fileCache.remove(id: id)
+//      self?.fileCache.saveToJSON(name: self?.jsonName ?? "hui")
+      self?.sqlite.delete(id: id)
       self?.updateItems()
       self?.tableView.reloadData()
     }
@@ -328,9 +328,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 //      }
       self.showButton.titleLabel?.text = "Скрыть"
       self.addDoneItems()
-      self.fileCache.remove(id: self.items[indexPath.row].id)
+//      self.fileCache.remove(id: self.items[indexPath.row].id)
+      self.sqlite.delete(id: self.items[indexPath.row].id)
       self.tableView.reloadData()
-      self.fileCache.saveToJSON(name: self.jsonName)
+//      self.fileCache.saveToJSON(name: self.jsonName)
       self.updateItems()
       self.tableView.deleteRows(at: [indexPath], with: .fade)
       self.tableView.reloadData()
@@ -365,9 +366,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let deleteAction = UIAction(title: "Удалить") { [weak self] action in
           self?.showButton.titleLabel?.text = "Скрыть"
           self?.addDoneItems()
-          self?.fileCache.remove(id: (self?.items[indexPath.row].id) ?? "")
+//          self?.fileCache.remove(id: (self?.items[indexPath.row].id) ?? "")
+          self?.sqlite.delete(id: (self?.items[indexPath.row].id) ?? "")
           self?.tableView.reloadData()
-          self?.fileCache.saveToJSON(name: self?.jsonName ?? "hui")
+//          self?.fileCache.saveToJSON(name: self?.jsonName ?? "hui")
           self?.updateItems()
         }
         return UIMenu(title: "", children: [deleteAction])
