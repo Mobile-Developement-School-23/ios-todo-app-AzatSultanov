@@ -54,12 +54,11 @@ enum Colors {
   }
 }
 
-
 enum Images {
   static let imageSegment1 = UIImage(named: "lowPriority")
   static let imageSegment3 = UIImage(named: "important")
   
-  enum isDoneButton {
+  enum IsDoneButton {
     static let circle = UIImage(named: "circle")
     static let redCircle = UIImage(named: "redCircle")
     static let doneCircle = UIImage(named: "isDone")

@@ -1,5 +1,3 @@
-
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -14,7 +12,7 @@ class ViewController: UIViewController {
   let showButton = UIButton(type: .system)
   let horizontalStack = UIStackView()
   
-  let tableView = UITableView()
+  let tableView = UITableView(frame: .zero, style: .insetGrouped)
   let itemStack = UIStackView()
   let addButton = UIButton(type: .system)
   
@@ -24,6 +22,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemGray5
+    let datatask = URLSession()
     
     updateItems()
     setupNavigationBar()
@@ -93,11 +92,6 @@ class ViewController: UIViewController {
     addButton.backgroundColor = .white
     addButton.setImage(Images.addButton, for: .normal)
     
-    if traitCollection.userInterfaceStyle == .dark {
-      addButton.layer.shadowColor = UIColor.systemBlue.cgColor
-    } else {
-      addButton.layer.shadowColor = UIColor.black.cgColor
-    }
     addButton.layer.shadowOpacity = 0.2
     addButton.layer.shadowOffset = CGSize(width: 0, height: 22)
     addButton.layer.shadowRadius = 22
@@ -117,7 +111,8 @@ class ViewController: UIViewController {
   private func setupTableView() {
     tableView.backgroundColor = .clear
     
-    tableView.layer.cornerRadius = 16
+//    tableView.layer.cornerRadius = 16
+    
     
     tableView.delegate = self
     tableView.dataSource = self
@@ -139,9 +134,9 @@ class ViewController: UIViewController {
       horizontalStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
       horizontalStack.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
       
-      tableView.topAnchor.constraint(equalTo: horizontalStack.bottomAnchor, constant: 16),
-      tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-      tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+      tableView.topAnchor.constraint(equalTo: horizontalStack.bottomAnchor),
+      tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
       tableView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor),
       
       addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -271,7 +266,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
       cell.contentConfiguration = config
       
-      cell.layer.cornerRadius = 16
+//      cell.layer.cornerRadius = 16
       cell.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
 
       cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
