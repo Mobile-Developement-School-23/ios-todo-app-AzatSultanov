@@ -17,6 +17,7 @@ private enum FileFormat: String {
 
 class FileCache: JsonFunc {
   private(set) var dictToDo: [String: ToDoItem] = [:]
+//  private var dbQueue: DatabaseQueue?
   
   // MARK: add & remove funcs
   func add(toDoItem: ToDoItem) -> ToDoItem? {
@@ -79,8 +80,6 @@ extension FileCache {
       print("Ошибка преобразования в json")
       return
     }
-    
-    
     guard ((try? data.write(to: pathToFile)) != nil) else {
       print("Ошибка при сохранении файла")
       return
@@ -123,4 +122,28 @@ extension FileCache {
     }
   }
   
+  // MARK: work with SQLite
+//  private func getDataBaseQueue() throws -> DatabaseQueue {
+//    let fileManager = FileManager.default
+//
+//    let dbPath = try fileManager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appending(path: "toDoItems.db").path()
+//
+//    if fileManager.fileExists(atPath: dbPath) {
+//      let dbResourcePath = Bundle.main.path(forResource: "toDoItems", ofType: "db") ?? "toDoItems.db"
+//
+//      try fileManager.copyItem(atPath: dbResourcePath, toPath: dbPath)
+//    }
+//
+//    return try DatabaseQueue(path: dbPath)
+//  }
+//  func loadFromDB() {
+//    try? getDataBaseQueue()
+//    try? dbQueue?.read({ db in
+//      let rows = try Row.fetchAll(db, sql: "SELECT id, text, importance, deadLine, isDone, creationDate, changeDate FROM toDoList")
+//      for row in rows {
+//        print(row)
+////        add(toDoItem: row)
+//      }
+//    })
+//  }
 }
